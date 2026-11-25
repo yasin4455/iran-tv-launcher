@@ -7,8 +7,6 @@
           status=${PIPESTATUS[1]}
           exit "$status"
 
-
-
 on:
   workflow_dispatch:
 
