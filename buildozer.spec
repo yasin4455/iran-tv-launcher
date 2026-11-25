@@ -1,4 +1,5 @@
 [app]
+android.accept_sdk_license = True
 title = Markaz Dastresi
 package.name = markazdastresi
 package.domain = org.example
