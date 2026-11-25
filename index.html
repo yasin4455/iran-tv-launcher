@@ -1,0 +1,16 @@
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101c35"><link rel="manifest" href="manifest.webmanifest"><title>مرکز دسترسی سریع</title><style>
+:root{--n:#101c35;--p:#192a49;--y:#f5c542;--w:#f7f8fc;--m:#aab7cc}*{box-sizing:border-box}body{margin:0;background:var(--n);color:var(--w);font-family:Tahoma,Arial}header{text-align:center;padding:26px 12px 16px}h1{color:var(--y);font-size:24px;margin:0}header p{color:var(--m);font-size:13px}main{max-width:620px;margin:auto;padding:12px 16px 28px}.title{color:var(--y);margin:14px 2px 10px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}button{border:0;border-radius:13px;background:var(--p);color:var(--w);font-weight:bold;font-size:15px;min-height:58px;padding:12px}button:active{opacity:.8}.browser small{display:block;color:var(--m);font-size:11px;margin-top:5px}.primary{width:100%;background:var(--y);color:var(--n);margin-top:16px;min-height:62px}.hidden{display:none}.toolbar{display:flex;align-items:center;gap:10px;margin:12px 0}.toolbar button{min-height:42px}.toolbar h2{font-size:17px;color:var(--y)}footer{text-align:center;color:var(--m);font-size:11px;padding:14px}@media(min-width:520px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style></head><body><header><h1>مرکز دسترسی سریع</h1><p>مرورگرها و شبکه‌های تلویزیونی ایران</p></header><main>
+<section id="home"><div class="title">مرورگرها و وب‌سایت‌ها</div><div class="grid">
+<button class="browser" onclick="openLink('https://www.google.com')">Google<small>جست‌وجوی گوگل</small></button>
+<button class="browser" onclick="openLink('https://www.microsoft.com/edge')">Microsoft Edge<small>مرورگر مایکروسافت</small></button>
+<button class="browser" onclick="openLink('https://www.mozilla.org/firefox/')">Firefox<small>مرورگر فایرفاکس</small></button>
+<button class="browser" onclick="openLink('https://tv3.ir')">شبکه سه<small>وب‌سایت شبکه ۳</small></button></div>
+<button class="primary" onclick="showChannels()">نمایش ۲۱ شبکه تلویزیونی</button></section>
+<section id="channels" class="hidden"><div class="toolbar"><button onclick="showHome()">بازگشت</button><h2>شبکه‌های تلویزیونی ۱ تا ۲۱</h2></div><div class="grid" id="channelGrid"></div><p style="color:var(--m);font-size:11px;line-height:1.9">پیوندهای پخش زنده ممکن است نیاز به به‌روزرسانی داشته باشند.</p></section></main><footer>طراحی سرمه‌ای و زرد طلایی</footer>
+<script>
+const channelLinks=Array.from({length:21},(_,i)=>`https://sepehr.irib.ir/?idc=32&idt=tv&idv=${i+1}`);channelLinks[2]="https://tv3.ir";
+function openLink(u){window.open(u,"_blank","noopener")}function showChannels(){home.classList.add("hidden");channels.classList.remove("hidden")}function showHome(){channels.classList.add("hidden");home.classList.remove("hidden")}
+for(let n=1;n<=21;n++){let b=document.createElement("button");b.textContent="شبکه "+n.toLocaleString("fa-IR");b.onclick=()=>openLink(channelLinks[n-1]);channelGrid.appendChild(b)}
+if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script></body></html>
