@@ -1,5 +1,13 @@
 
-name: Build Android APK
+      - name: Build APK
+        shell: bash
+        run: |
+          set +e
+          yes | buildozer -v android debug
+          status=${PIPESTATUS[1]}
+          exit "$status"
+
+
 
 on:
   workflow_dispatch:
